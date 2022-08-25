@@ -15,6 +15,6 @@ class FoodChainTest < Minitest::Test
     song_file = File.expand_path('../song.txt', __FILE__)
     expected  = IO.read(song_file)
 
-    assert_equal expected, FoodChain2.new.song
+    assert_equal expected, FoodChain.new.song
   end
 end
