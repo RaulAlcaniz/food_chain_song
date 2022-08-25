@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'chain_song_verse'
 
+# Main class to handle food chain song.
 class FoodChain
   ANIMALS = %w[fly spider bird cat dog goat cow horse].freeze
   NUMBER_OF_ITERATIONS = ANIMALS.count - 1

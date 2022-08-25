@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# It handles the behaviour of each verse of the food chain song
 class ChainSongVerse
   def initialize(verse_number, animals, number_of_iterations)
     @verse_number = verse_number
