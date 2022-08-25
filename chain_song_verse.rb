@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require_relative 'animals_involved'
 # It handles the behaviour of each verse of the food chain song
 class ChainSongVerse
-  def initialize(verse_number, animals, number_of_iterations)
+  include AnimalsInvolved
+
+  def initialize(verse_number)
     @verse_number = verse_number
-    @animals = animals
-    @number_of_iterations = number_of_iterations
+    @animals = ALL_ANIMALS
+    @number_of_iterations = animals.count - 1
   end
 
   def generate
@@ -22,7 +25,7 @@ class ChainSongVerse
   attr_reader :verse_number, :animals, :number_of_iterations
 
   def first_part
-    "I know an old lady who swallowed a #{animals[verse_number]}."
+    "I know an old lady who swallowed a #{animal}."
   end
 
   def second_part
@@ -56,6 +59,10 @@ class ChainSongVerse
     return "She's dead, of course!" if last_verse?
 
     "I don't know why she swallowed the fly. Perhaps she'll die."
+  end
+
+  def animal
+    animals[verse_number]
   end
 
   def first_verse?
