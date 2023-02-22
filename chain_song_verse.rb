@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'animals_involved'
+require_relative 'animals'
 # It handles the behaviour of each verse of the food chain song
 class ChainSongVerse
-  include AnimalsInvolved
+  include Animals
 
   def initialize(verse_number)
     @verse_number = verse_number
-    @animals = ALL_ANIMALS
-    @number_of_iterations = animals.count - 1
+    @animals = ORDERED_ANIMALS
+    @number_of_iterations = NUMBER_OF_ANIMALS - 1
   end
 
   def generate
@@ -29,21 +29,23 @@ class ChainSongVerse
   end
 
   def second_part
-    return '' if first_verse? || last_verse?
+    #return '' if first_verse? || last_verse?
 
     case verse_number
     when 1
       'It wriggled and jiggled and tickled inside her.'
     when 2
-      'How absurd to swallow a bird!'
+      "How absurd to swallow a #{animal}!"
     when 3
-      'Imagine that, to swallow a cat!'
+      "Imagine that, to swallow a #{animal}!"
     when 4
-      'What a hog, to swallow a dog!'
+      "What a hog, to swallow a #{animal}!"
     when 5
       'Just opened her throat and swallowed a goat!'
     when 6
-      'I don\'t know how she swallowed a cow!'
+      "I don't know how she swallowed a #{animal}!"
+    else
+      ''
     end
   end
 
