@@ -9,8 +9,6 @@ class FoodChain
 
   NUMBER_OF_ITERATIONS = AnimalsInvolved::ALL_ANIMALS.count - 1
 
-  def initialize; end
-
   def song
     0.upto(NUMBER_OF_ITERATIONS).map do |verse_number|
       ChainSongVerse.new(verse_number).generate
