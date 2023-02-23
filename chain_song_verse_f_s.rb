@@ -17,57 +17,42 @@ class ChainSongVerseFS
       <<~VERSE
         #{first_part(number)}
         It wriggled and jiggled and tickled inside her.
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     when 2
       <<~VERSE
         #{first_part(number)}
         How absurd to swallow a bird!
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
-        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     when 3
       <<~VERSE
         #{first_part(number)}
         Imagine that, to swallow a cat!
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
-        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
-        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     when 4
       <<~VERSE
         #{first_part(number)}
         What a hog, to swallow a dog!
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
-        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
-        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
-        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     when 5
       <<~VERSE
         #{first_part(number)}
         Just opened her throat and swallowed a goat!
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
-        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
-        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
-        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
-        #{action} #{ANIMALS[number - 4]} #{consequence} #{ANIMALS[number - 5]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     when 6
       <<~VERSE
         #{first_part(number)}
         I don't know how she swallowed a cow!
-        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
-        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
-        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
-        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
-        #{action} #{ANIMALS[number - 4]} #{consequence} #{ANIMALS[number - 5]}.
-        #{action} #{ANIMALS[number - 5]} #{consequence} #{ANIMALS[number - 6]}.
+        #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
     end
@@ -87,6 +72,12 @@ class ChainSongVerseFS
 
   def first_part(number) # FIXME: Name?
     "I know an old lady who swallowed a #{ANIMALS[number]}."
+  end
+
+  def chain_reasons(number)
+    number.downto(1).map do |i|
+      "#{action} #{ANIMALS[i]} #{consequence} #{ANIMALS[i - 1]}."
+    end.join("\n")
   end
 
   def action
