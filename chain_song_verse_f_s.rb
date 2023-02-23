@@ -13,45 +13,10 @@ class ChainSongVerseFS
         #{first_part(number)}
         #{last_part(number)}
       VERSE
-    when 1
+    else
       <<~VERSE
         #{first_part(number)}
-        It wriggled and jiggled and tickled inside her.
-        #{chain_reasons(number)}
-        #{last_part(number)}
-      VERSE
-    when 2
-      <<~VERSE
-        #{first_part(number)}
-        How absurd to swallow a bird!
-        #{chain_reasons(number)}
-        #{last_part(number)}
-      VERSE
-    when 3
-      <<~VERSE
-        #{first_part(number)}
-        Imagine that, to swallow a cat!
-        #{chain_reasons(number)}
-        #{last_part(number)}
-      VERSE
-    when 4
-      <<~VERSE
-        #{first_part(number)}
-        What a hog, to swallow a dog!
-        #{chain_reasons(number)}
-        #{last_part(number)}
-      VERSE
-    when 5
-      <<~VERSE
-        #{first_part(number)}
-        Just opened her throat and swallowed a goat!
-        #{chain_reasons(number)}
-        #{last_part(number)}
-      VERSE
-    when 6
-      <<~VERSE
-        #{first_part(number)}
-        I don't know how she swallowed a cow!
+        #{opinion(number)}
         #{chain_reasons(number)}
         #{last_part(number)}
       VERSE
@@ -74,7 +39,7 @@ class ChainSongVerseFS
     "I know an old lady who swallowed a #{ANIMALS[number]}."
   end
 
-  def chain_reasons(number)
+  def chain_reasons(number) # FIXME: Name?
     number.downto(1).map do |i|
       "#{action} #{ANIMALS[i]} #{consequence} #{ANIMALS[i - 1]}."
     end.join("\n")
@@ -86,5 +51,22 @@ class ChainSongVerseFS
 
   def consequence
     'to catch the'
+  end
+
+  def opinion(number)
+    case number
+    when 1
+      'It wriggled and jiggled and tickled inside her.'
+    when 2
+      'How absurd to swallow a bird!'
+    when 3
+      'Imagine that, to swallow a cat!'
+    when 4
+      'What a hog, to swallow a dog!'
+    when 5
+      'Just opened her throat and swallowed a goat!'
+    when 6
+      "I don't know how she swallowed a cow!"
+    end
   end
 end
