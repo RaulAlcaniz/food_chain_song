@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'chain_song_verse'
+require_relative 'chain_song_verse_f_s'
+# require_relative 'chain_song_verse'
 require_relative 'animals_involved'
 
 # Main class to handle food chain song.
@@ -11,7 +12,7 @@ class FoodChain
 
   def song
     0.upto(NUMBER_OF_ITERATIONS).map do |verse_number|
-      ChainSongVerse.new(verse_number).generate
-    end.join("\n\n")
+      ChainSongVerseFS.new.generate(verse_number)
+    end.join("\n")
   end
 end
