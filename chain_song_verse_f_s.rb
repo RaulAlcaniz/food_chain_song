@@ -5,7 +5,7 @@ class ChainSongVerseFS
   #   @verse = verse
   # end
 
-  def generate(number)
+  def verse(number)
     case number
     when 0, 7
       <<~VERSE
@@ -74,7 +74,7 @@ class ChainSongVerseFS
 
   private
 
-  attr_accessor :verse
+  # attr_accessor :verse
 
   def last_part(number) # FIXME: Name?
     if number == 7

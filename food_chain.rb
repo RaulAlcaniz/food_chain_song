@@ -12,7 +12,7 @@ class FoodChain
 
   def song
     0.upto(NUMBER_OF_ITERATIONS).map do |verse_number|
-      ChainSongVerseFS.new.generate(verse_number)
+      ChainSongVerseFS.new.verse(verse_number)
     end.join("\n")
   end
 end
