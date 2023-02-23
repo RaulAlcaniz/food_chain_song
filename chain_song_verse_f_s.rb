@@ -76,7 +76,7 @@ class ChainSongVerseFS
 
   attr_accessor :verse
 
-  def last_part(number)
+  def last_part(number) # FIXME: Name?
     if number == 7
       "She's dead, of course!"
     else
@@ -84,7 +84,7 @@ class ChainSongVerseFS
     end
   end
 
-  def first_part(number)
+  def first_part(number) # FIXME: Name?
     "I know an old lady who swallowed a #{animal(number)}."
   end
 
