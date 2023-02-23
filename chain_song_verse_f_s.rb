@@ -4,6 +4,7 @@ class ChainSongVerseFS
   # def initialize(verse)
   #   @verse = verse
   # end
+  ANIMALS = %w[fly spider bird cat dog goat cow horse].freeze
 
   def verse(number)
     case number
@@ -16,57 +17,57 @@ class ChainSongVerseFS
       <<~VERSE
         #{first_part(number)}
         It wriggled and jiggled and tickled inside her.
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
         #{last_part(number)}
       VERSE
     when 2
       <<~VERSE
         #{first_part(number)}
         How absurd to swallow a bird!
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
-        #{action} spider #{consequence} fly.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
         #{last_part(number)}
       VERSE
     when 3
       <<~VERSE
         #{first_part(number)}
         Imagine that, to swallow a cat!
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
-        #{action} bird #{consequence} spider.
-        #{action} spider #{consequence} fly.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
+        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
         #{last_part(number)}
       VERSE
     when 4
       <<~VERSE
         #{first_part(number)}
         What a hog, to swallow a dog!
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
-        #{action} cat #{consequence} bird.
-        #{action} bird #{consequence} spider.
-        #{action} spider #{consequence} fly.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
+        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
+        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
         #{last_part(number)}
       VERSE
     when 5
       <<~VERSE
         #{first_part(number)}
         Just opened her throat and swallowed a goat!
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
-        #{action} dog #{consequence} cat.
-        #{action} cat #{consequence} bird.
-        #{action} bird #{consequence} spider.
-        #{action} spider #{consequence} fly.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
+        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
+        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
+        #{action} #{ANIMALS[number - 4]} #{consequence} #{ANIMALS[number - 5]}.
         #{last_part(number)}
       VERSE
     when 6
       <<~VERSE
         #{first_part(number)}
         I don't know how she swallowed a cow!
-        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
-        #{action} goat #{consequence} dog.
-        #{action} dog #{consequence} cat.
-        #{action} cat #{consequence} bird.
-        #{action} bird #{consequence} spider.
-        #{action} spider #{consequence} fly.
+        #{action} #{ANIMALS[number]} #{consequence} #{ANIMALS[number - 1]}.
+        #{action} #{ANIMALS[number - 1]} #{consequence} #{ANIMALS[number - 2]}.
+        #{action} #{ANIMALS[number - 2]} #{consequence} #{ANIMALS[number - 3]}.
+        #{action} #{ANIMALS[number - 3]} #{consequence} #{ANIMALS[number - 4]}.
+        #{action} #{ANIMALS[number - 4]} #{consequence} #{ANIMALS[number - 5]}.
+        #{action} #{ANIMALS[number - 5]} #{consequence} #{ANIMALS[number - 6]}.
         #{last_part(number)}
       VERSE
     end
@@ -85,28 +86,7 @@ class ChainSongVerseFS
   end
 
   def first_part(number) # FIXME: Name?
-    "I know an old lady who swallowed a #{animal(number)}."
-  end
-
-  def animal(number)
-    case number
-    when 0
-      'fly'
-    when 1
-      'spider'
-    when 2
-      'bird'
-    when 3
-      'cat'
-    when 4
-      'dog'
-    when 5
-      'goat'
-    when 6
-      'cow'
-    when 7
-      'horse'
-    end
+    "I know an old lady who swallowed a #{ANIMALS[number]}."
   end
 
   def action
