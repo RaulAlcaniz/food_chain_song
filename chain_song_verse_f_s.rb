@@ -16,57 +16,57 @@ class ChainSongVerseFS
       <<~VERSE
         #{first_part(number)}
         It wriggled and jiggled and tickled inside her.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
         #{last_part(number)}
       VERSE
     when 2
       <<~VERSE
         #{first_part(number)}
         How absurd to swallow a bird!
-        She swallowed the bird to catch the spider.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} spider #{consequence} fly.
         #{last_part(number)}
       VERSE
     when 3
       <<~VERSE
         #{first_part(number)}
         Imagine that, to swallow a cat!
-        She swallowed the cat to catch the bird.
-        She swallowed the bird to catch the spider.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} bird #{consequence} spider.
+        #{action} spider #{consequence} fly.
         #{last_part(number)}
       VERSE
     when 4
       <<~VERSE
         #{first_part(number)}
         What a hog, to swallow a dog!
-        She swallowed the dog to catch the cat.
-        She swallowed the cat to catch the bird.
-        She swallowed the bird to catch the spider.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} cat #{consequence} bird.
+        #{action} bird #{consequence} spider.
+        #{action} spider #{consequence} fly.
         #{last_part(number)}
       VERSE
     when 5
       <<~VERSE
         #{first_part(number)}
         Just opened her throat and swallowed a goat!
-        She swallowed the goat to catch the dog.
-        She swallowed the dog to catch the cat.
-        She swallowed the cat to catch the bird.
-        She swallowed the bird to catch the spider.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} dog #{consequence} cat.
+        #{action} cat #{consequence} bird.
+        #{action} bird #{consequence} spider.
+        #{action} spider #{consequence} fly.
         #{last_part(number)}
       VERSE
     when 6
       <<~VERSE
         #{first_part(number)}
         I don't know how she swallowed a cow!
-        She swallowed the cow to catch the goat.
-        She swallowed the goat to catch the dog.
-        She swallowed the dog to catch the cat.
-        She swallowed the cat to catch the bird.
-        She swallowed the bird to catch the spider.
-        She swallowed the spider to catch the fly.
+        #{action} #{animal(number)} #{consequence} #{animal(number - 1)}.
+        #{action} goat #{consequence} dog.
+        #{action} dog #{consequence} cat.
+        #{action} cat #{consequence} bird.
+        #{action} bird #{consequence} spider.
+        #{action} spider #{consequence} fly.
         #{last_part(number)}
       VERSE
     end
@@ -107,5 +107,13 @@ class ChainSongVerseFS
     when 7
       'horse'
     end
+  end
+
+  def action
+    'She swallowed the'
+  end
+
+  def consequence
+    'to catch the'
   end
 end
